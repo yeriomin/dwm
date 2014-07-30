@@ -1,4 +1,4 @@
 #!/bin/bash
 sudo cp dwm.desktop /usr/share/xsessions
-cp .xinitrc ~
+cp .xinitrc .Xresources ~
 ln -s ~/.xinitrc ~/.xsession

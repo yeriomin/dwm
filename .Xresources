@@ -1,0 +1,10 @@
+xterm*font: terminus-16
+xterm*loginShell: true
+xterm*saveLines: 10000
+xterm*boldMode: false
+xterm*fullscreen: never
+xterm*metaSendsEscape: true
+xterm.omitTranslation: fullscreen
+xterm*foreground: lightgray
+xterm*cursorColor: green
+xterm*background: black
