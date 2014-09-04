@@ -1,5 +1,5 @@
-xterm*font: terminus-16
-xterm*loginShell: true
+xterm*faceName: Terminus:size=10:antialias=false
+loginShell: true
 xterm*saveLines: 10000
 xterm*boldMode: false
 xterm*fullscreen: never
