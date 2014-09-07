@@ -12,6 +12,7 @@ xsetroot -name "$WIRELESS_NETWORK_NAME | $BATTERY_CAPACITY | $DATE";
 export _JAVA_AWT_WM_NONREPARENTING=1
 wmname LG3D
 xrdb -merge ~/.Xresources
+setxkbmap -layout us,ru -variant -option grp:alt_shift_toggle,grp_led:scroll,terminate:ctrl_alt_bksp
 while SET_ROOT_WINDOW_NAME
 do
 sleep 5
