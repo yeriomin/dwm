@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
+#include <X11/XF86keysym.h>
+
 /* appearance */
 static const char font[]            = "Terminus 10";
 static const char normbordercolor[] = "#444444";
@@ -52,8 +54,14 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", "-xos4-terminus-medium-r-*-*-14-*", "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "xterm", NULL };
+static const char *dmenucmd[]   = { "dmenu_run", "-fn", "-xos4-terminus-medium-r-*-*-14-*", "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]    = { "xterm", NULL };
+static const char *volumedown[] = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
+static const char *volumeup[]   = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+static const char *mute[]       = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *brightdown[] = { "xbacklight", "-", "10", NULL };
+static const char *brightup[]   = { "xbacklight", "+", "10", NULL };
+static const char *touchpad[]   = { "touchpad-toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -69,6 +77,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = touchpad } },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -90,6 +99,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,                            XF86XK_AudioLowerVolume,  spawn, { .v = volumedown } },
+	{ 0,                            XF86XK_AudioRaiseVolume,  spawn, { .v = volumeup } },
+	{ 0,                            XF86XK_AudioMute,         spawn, { .v = mute } },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, { .v = brightdown } },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn, { .v = brightup } },
+	{ 0,                            XF86XK_TouchpadToggle,    spawn, { .v = touchpad } },
 };
 
 /* button definitions */
