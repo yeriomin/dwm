@@ -19,11 +19,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 setxkbmap -layout us,ru -variant -option grp:alt_shift_toggle,grp_led:scroll,terminate:ctrl_alt_bksp
-export _JAVA_AWT_WM_NONREPARENTING=1
-wmname LG3D
-xrdb -merge ~/.Xresources
+# xmodmap -pke gets you the keycodes
+xmodmap -e "keycode 108 = Super_L" # reassign Alt_R to Super_L
+xmodmap -e "remove mod1 = Super_L" # make sure X keeps it out of the mod1 group
+export _JAVA_AWT_WM_NONREPARENTING=1 # fixes java empty windows
+wmname LG3D # fixes java empty windows
+xrdb -merge ~/.Xresources # applies .Xresources - mostly xterm settings
+
 while SET_ROOT_WINDOW_NAME
 do
-sleep 5
+sleep 2
 done &
 exec dwm
