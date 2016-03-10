@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo pacman -S pango dmenu wmname terminus-font
+sudo pacman -S dmenu wmname terminus-font
 
