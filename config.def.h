@@ -3,9 +3,9 @@
 
 /* appearance */
 static const char *fonts[] = {
-    "terminus:size=10:antialias=false"
+    "terminus:size=14:antialias=false"
 };
-static const char dmenufont[]       = "terminus:size=10:antialias=false";
+static const char dmenufont[]       = "terminus:size=14:antialias=false";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
